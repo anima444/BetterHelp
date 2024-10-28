@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Help App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .greet-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .schedule {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .task-input {
+            width: 90%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            background-color: #2196F3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Better Help</h1>
+    <div>
+        <input type="text" id="name" placeholder="Enter your name" />
+        <button class="greet-btn" onclick="greetUser()">Greet Me</button>
+    </div>
+    <h2 id="greeting"></h2>
+
+    <div class="schedule">
+        <h3>Today's Schedule</h3>
+        <input type="text" class="task-input" id="task1" placeholder="Task 1" />
+        <input type="text" class="task-input" id="task2" placeholder="Task 2" />
+        <input type="text" class="task-input" id="task3" placeholder="Task 3" />
+        <button onclick="saveSchedule()">Save Schedule</button>
+    </div>
+
+    <div id="scheduleDisplay"></div>
+
+    <div class="nav-buttons">
+        <button onclick="navigate('Sessions')">Sessions</button>
+        <button onclick="navigate('Help')">Help</button>
+        <button onclick="navigate('Profile')">Profile</button>
+    </div>
+</div>
+
+<script>
+    function greetUser() {
+        const name = document.getElementById("name").value;
+        const greetingElement = document.getElementById("greeting");
+        if (name) {
+            greetingElement.textContent = `Hello, ${name}! Welcome to Better Help.`;
+        } else {
+            greetingElement.textContent = "Hello! Please enter your name.";
+        }
+    }
+
+    function saveSchedule() {
+        const task1 = document.getElementById("task1").value || "Task 1 not set";
+        const task2 = document.getElementById("task2").value || "Task 2 not set";
+        const task3 = document.getElementById("task3").value || "Task 3 not set";
+        const scheduleDisplay = document.getElementById("scheduleDisplay");
+
+        scheduleDisplay.innerHTML = `
+            <h3>Your Schedule:</h3>
+            <ul>
+                <li>${task1}</li>
+                <li>${task2}</li>
+                <li>${task3}</li>
+            </ul>
+        `;
+    }
+
+    function navigate(page) {
+        alert(`Navigating to ${page} page...`);
+    }
+</script>
+
+</body>
+</html>
